@@ -1,0 +1,285 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Scripts/World.gd" type="Script" id=1]
+[ext_resource path="res://assets/background2.jpg" type="Texture" id=2]
+[ext_resource path="res://Scripts/Paddle.gd" type="Script" id=3]
+[ext_resource path="res://assets/paddle2.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Ball.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/OstrichSans-Heavy.otf" type="DynamicFontData" id=6]
+[ext_resource path="res://Scripts/Score.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/Lives.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/Tile.tscn" type="PackedScene" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 47.7704, 15.6152 )
+
+[sub_resource type="PhysicsMaterial" id=2]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="DynamicFont" id=3]
+size = 22
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 22
+font_data = ExtResource( 6 )
+
+[node name="World" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 522, 352 )
+scale = Vector2( 1.3693, 1.35083 )
+texture = ExtResource( 2 )
+
+[node name="Paddle" type="KinematicBody2D" parent="."]
+position = Vector2( 544, 576 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Paddle"]
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paddle"]
+position = Vector2( 6.10352e-005, 6.10352e-005 )
+shape = SubResource( 1 )
+
+[node name="Wall" type="StaticBody2D" parent="."]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wall"]
+polygon = PoolVector2Array( 0, 0, -1, 665, -80, 677, -87, -52, 1098, -35, 1100, 665, 1031, 666, 1027, 609, 1026, 0 )
+
+[node name="Ball" parent="." instance=ExtResource( 5 )]
+position = Vector2( 510, 540 )
+physics_material_override = SubResource( 2 )
+
+[node name="Score" type="Label" parent="."]
+margin_left = 30.0
+margin_top = 20.0
+margin_right = 83.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.956863, 0.913725, 0.262745, 1 )
+custom_colors/font_outline_modulate = Color( 0.890196, 0.345098, 0.968627, 1 )
+text = "SCORE: "
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Lives" type="Label" parent="."]
+margin_left = 940.0
+margin_top = 20.0
+margin_right = 990.0
+margin_bottom = 45.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.658824, 0.658824, 1 )
+custom_colors/font_outline_modulate = Color( 0.298039, 0.639216, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "LIVES: "
+script = ExtResource( 8 )
+
+[node name="Tiles" type="Node" parent="."]
+
+[node name="Tiles 1" type="Node" parent="Tiles"]
+
+[node name="Tile" parent="Tiles/Tiles 1" instance=ExtResource( 9 )]
+position = Vector2( 920, 290 )
+
+[node name="Tile2" parent="Tiles/Tiles 1" instance=ExtResource( 9 )]
+position = Vector2( 280, 290 )
+
+[node name="Tile3" parent="Tiles/Tiles 1" instance=ExtResource( 9 )]
+position = Vector2( 840, 290 )
+
+[node name="Tile4" parent="Tiles/Tiles 1" instance=ExtResource( 9 )]
+position = Vector2( 760, 290 )
+
+[node name="Tile5" parent="Tiles/Tiles 1" instance=ExtResource( 9 )]
+position = Vector2( 680, 290 )
+
+[node name="Tile6" parent="Tiles/Tiles 1" instance=ExtResource( 9 )]
+position = Vector2( 600, 290 )
+
+[node name="Tile7" parent="Tiles/Tiles 1" instance=ExtResource( 9 )]
+position = Vector2( 520, 290 )
+
+[node name="Tile8" parent="Tiles/Tiles 1" instance=ExtResource( 9 )]
+position = Vector2( 440, 290 )
+
+[node name="Tile9" parent="Tiles/Tiles 1" instance=ExtResource( 9 )]
+position = Vector2( 360, 290 )
+
+[node name="Tile10" parent="Tiles/Tiles 1" instance=ExtResource( 9 )]
+position = Vector2( 200, 290 )
+
+[node name="Tiles 2" type="Node" parent="Tiles"]
+
+[node name="Tile" parent="Tiles/Tiles 2" instance=ExtResource( 9 )]
+position = Vector2( 780, 250 )
+
+[node name="Tile2" parent="Tiles/Tiles 2" instance=ExtResource( 9 )]
+position = Vector2( 700, 250 )
+
+[node name="Tile3" parent="Tiles/Tiles 2" instance=ExtResource( 9 )]
+position = Vector2( 620, 250 )
+
+[node name="Tile4" parent="Tiles/Tiles 2" instance=ExtResource( 9 )]
+position = Vector2( 540, 250 )
+
+[node name="Tile5" parent="Tiles/Tiles 2" instance=ExtResource( 9 )]
+position = Vector2( 460, 250 )
+
+[node name="Tile6" parent="Tiles/Tiles 2" instance=ExtResource( 9 )]
+position = Vector2( 380, 250 )
+
+[node name="Tile7" parent="Tiles/Tiles 2" instance=ExtResource( 9 )]
+position = Vector2( 300, 250 )
+
+[node name="Tile8" parent="Tiles/Tiles 2" instance=ExtResource( 9 )]
+position = Vector2( 220, 250 )
+
+[node name="Tile9" parent="Tiles/Tiles 2" instance=ExtResource( 9 )]
+position = Vector2( 140, 250 )
+
+[node name="Tile10" parent="Tiles/Tiles 2" instance=ExtResource( 9 )]
+position = Vector2( 860, 250 )
+
+[node name="Tiles 3" type="Node" parent="Tiles"]
+
+[node name="Tile" parent="Tiles/Tiles 3" instance=ExtResource( 9 )]
+position = Vector2( 170, 210 )
+
+[node name="Tile2" parent="Tiles/Tiles 3" instance=ExtResource( 9 )]
+position = Vector2( 90, 210 )
+
+[node name="Tile3" parent="Tiles/Tiles 3" instance=ExtResource( 9 )]
+position = Vector2( 732, 210 )
+
+[node name="Tile4" parent="Tiles/Tiles 3" instance=ExtResource( 9 )]
+position = Vector2( 652, 210 )
+
+[node name="Tile5" parent="Tiles/Tiles 3" instance=ExtResource( 9 )]
+position = Vector2( 572, 210 )
+
+[node name="Tile6" parent="Tiles/Tiles 3" instance=ExtResource( 9 )]
+position = Vector2( 492, 210 )
+
+[node name="Tile7" parent="Tiles/Tiles 3" instance=ExtResource( 9 )]
+position = Vector2( 412, 210 )
+
+[node name="Tile8" parent="Tiles/Tiles 3" instance=ExtResource( 9 )]
+position = Vector2( 332, 210 )
+
+[node name="Tile9" parent="Tiles/Tiles 3" instance=ExtResource( 9 )]
+position = Vector2( 252, 210 )
+
+[node name="Tile10" parent="Tiles/Tiles 3" instance=ExtResource( 9 )]
+position = Vector2( 812, 210 )
+
+[node name="Tiles 4" type="Node" parent="Tiles"]
+
+[node name="Tile" parent="Tiles/Tiles 4" instance=ExtResource( 9 )]
+position = Vector2( 140, 170 )
+
+[node name="Tile2" parent="Tiles/Tiles 4" instance=ExtResource( 9 )]
+position = Vector2( 780, 170 )
+
+[node name="Tile3" parent="Tiles/Tiles 4" instance=ExtResource( 9 )]
+position = Vector2( 700, 170 )
+
+[node name="Tile4" parent="Tiles/Tiles 4" instance=ExtResource( 9 )]
+position = Vector2( 620, 170 )
+
+[node name="Tile5" parent="Tiles/Tiles 4" instance=ExtResource( 9 )]
+position = Vector2( 540, 170 )
+
+[node name="Tile6" parent="Tiles/Tiles 4" instance=ExtResource( 9 )]
+position = Vector2( 460, 170 )
+
+[node name="Tile7" parent="Tiles/Tiles 4" instance=ExtResource( 9 )]
+position = Vector2( 380, 170 )
+
+[node name="Tile8" parent="Tiles/Tiles 4" instance=ExtResource( 9 )]
+position = Vector2( 300, 170 )
+
+[node name="Tile9" parent="Tiles/Tiles 4" instance=ExtResource( 9 )]
+position = Vector2( 220, 170 )
+
+[node name="Tile10" parent="Tiles/Tiles 4" instance=ExtResource( 9 )]
+position = Vector2( 860, 170 )
+
+[node name="Tiles 5" type="Node" parent="Tiles"]
+
+[node name="Tile" parent="Tiles/Tiles 5" instance=ExtResource( 9 )]
+position = Vector2( 680, 130 )
+
+[node name="Tile2" parent="Tiles/Tiles 5" instance=ExtResource( 9 )]
+position = Vector2( 600, 130 )
+
+[node name="Tile3" parent="Tiles/Tiles 5" instance=ExtResource( 9 )]
+position = Vector2( 520, 130 )
+
+[node name="Tile4" parent="Tiles/Tiles 5" instance=ExtResource( 9 )]
+position = Vector2( 440, 130 )
+
+[node name="Tile5" parent="Tiles/Tiles 5" instance=ExtResource( 9 )]
+position = Vector2( 360, 130 )
+
+[node name="Tile6" parent="Tiles/Tiles 5" instance=ExtResource( 9 )]
+position = Vector2( 280, 130 )
+
+[node name="Tile7" parent="Tiles/Tiles 5" instance=ExtResource( 9 )]
+position = Vector2( 920, 130 )
+
+[node name="Tile8" parent="Tiles/Tiles 5" instance=ExtResource( 9 )]
+position = Vector2( 840, 130 )
+
+[node name="Tile9" parent="Tiles/Tiles 5" instance=ExtResource( 9 )]
+position = Vector2( 760, 130 )
+
+[node name="Tile10" parent="Tiles/Tiles 5" instance=ExtResource( 9 )]
+position = Vector2( 200, 130 )
+
+[node name="Tiles 6" type="Node" parent="Tiles"]
+
+[node name="Tile" parent="Tiles/Tiles 6" instance=ExtResource( 9 )]
+position = Vector2( 780, 90 )
+
+[node name="Tile2" parent="Tiles/Tiles 6" instance=ExtResource( 9 )]
+position = Vector2( 620, 90 )
+
+[node name="Tile3" parent="Tiles/Tiles 6" instance=ExtResource( 9 )]
+position = Vector2( 540, 90 )
+
+[node name="Tile4" parent="Tiles/Tiles 6" instance=ExtResource( 9 )]
+position = Vector2( 460, 90 )
+
+[node name="Tile5" parent="Tiles/Tiles 6" instance=ExtResource( 9 )]
+position = Vector2( 300, 90 )
+
+[node name="Tile6" parent="Tiles/Tiles 6" instance=ExtResource( 9 )]
+position = Vector2( 380, 90 )
+
+[node name="Tile7" parent="Tiles/Tiles 6" instance=ExtResource( 9 )]
+position = Vector2( 220, 90 )
+
+[node name="Tile8" parent="Tiles/Tiles 6" instance=ExtResource( 9 )]
+position = Vector2( 140, 90 )
+
+[node name="Tile9" parent="Tiles/Tiles 6" instance=ExtResource( 9 )]
+position = Vector2( 700, 90 )
+
+[node name="Tile10" parent="Tiles/Tiles 6" instance=ExtResource( 9 )]
+position = Vector2( 860, 90 )
+
+[node name="Scrap" type="Node" parent="Tiles"]
+
+[node name="StaticBody2D" parent="Tiles/Scrap" instance=ExtResource( 9 )]
+position = Vector2( -245.983, -69.8061 )

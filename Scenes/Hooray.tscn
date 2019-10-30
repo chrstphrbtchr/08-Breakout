@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Hooray.gd" type="Script" id=1]
+[ext_resource path="res://assets/background4.jpeg" type="Texture" id=2]
+[ext_resource path="res://assets/OstrichSans-Heavy.otf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 3 )
+
+[node name="Hooray" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Message" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Message"]
+position = Vector2( 550, 360 )
+scale = Vector2( 0.50885, 0.452222 )
+texture = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="Message"]
+margin_left = 20.0
+margin_top = 160.0
+margin_right = 1000.0
+margin_bottom = 220.0
+color = Color( 0.533333, 0.894118, 0.988235, 1 )
+
+[node name="Label" type="Label" parent="Message"]
+margin_top = 170.0
+margin_right = 1020.0
+margin_bottom = 620.0
+custom_fonts/font = SubResource( 1 )
+text = "CONGRATULATIONS! YOU HAVE BESTED THE GALACTIC ARMADA!!
+
+
+
+
+
+
+
+
+CLICK FOR A REMATCH!"
+align = 1
